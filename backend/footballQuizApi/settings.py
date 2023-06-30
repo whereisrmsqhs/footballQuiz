@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "quiz",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [

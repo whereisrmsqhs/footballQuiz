@@ -4,7 +4,8 @@ from django.conf import settings
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from quiz.api import QuizCategoryList, QuizCategoryDetail
+from quiz.api import QuizCategoryList, QuizCategoryDetail, imageQuizQnAList, imageQuizQnADetail
+from django.conf.urls.static import static
 
 
 schema_view = get_schema_view(
@@ -23,9 +24,11 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("admin/", admin.site.urls),
     #path("api/", include('post.urls')),
-    path("api/quizCategory_list", QuizCategoryList.as_view(), name="quizCategory_list"),
-    path("api/quizCategory_list/<str:title>", QuizCategoryDetail.as_view(), name="quizCategory_list"),
-]
+    path("quizCategory_list", QuizCategoryList.as_view(), name="quizCategory_list"),
+    path("quizCategory_list/<str:title>", QuizCategoryDetail.as_view(), name="quizCategory_list"),
+    path("quizCategory_list/imageQuiz_list/", imageQuizQnAList.as_view(), name="imageQuizAna_list"),
+    path("quizCategory_list/imageQuiz_list/<int:id>", imageQuizQnADetail.as_view(), name="imageQuizAna_list"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += [

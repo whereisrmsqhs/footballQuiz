@@ -36,12 +36,12 @@ class QuizCategoryDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class imageQuizQnAList(APIView):
-    def get(self, request):
-        model = imageQuizQnA.objects.all()
+    def get(self, request, quiz_category):
+        model = quizCategory.objects.get(title=quiz_category).imagequizqna
         serializer = ImageQuizQnASerializer(model, many=True)
         return Response(serializer.data)
 
-    def post(self, request):
+    def post(self, request, quiz_category):
         serializer = ImageQuizQnASerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

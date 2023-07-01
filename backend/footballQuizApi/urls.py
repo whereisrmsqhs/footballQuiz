@@ -26,8 +26,8 @@ urlpatterns = [
     #path("api/", include('post.urls')),
     path("quizCategory_list", QuizCategoryList.as_view(), name="quizCategory_list"),
     path("quizCategory_list/<str:title>", QuizCategoryDetail.as_view(), name="quizCategory_list"),
-    path("quizCategory_list/imageQuiz_list/", imageQuizQnAList.as_view(), name="imageQuizAna_list"),
-    path("quizCategory_list/imageQuiz_list/<int:id>", imageQuizQnADetail.as_view(), name="imageQuizAna_list"),
+    path("quizCategory_list/<str:quiz_category>/imageQuiz_list", imageQuizQnAList.as_view(), name="imageQuizAna_list"),
+    path("quizCategory_list/<str:title>/imageQuiz_list/<int:id>", imageQuizQnADetail.as_view(), name="imageQuizAna_list"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

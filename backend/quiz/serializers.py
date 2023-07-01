@@ -16,4 +16,4 @@ class QuizCategorySerializer(serializers.ModelSerializer):
     imagequizqna = ImageQuizQnASerializer(many=True, read_only=True)
     class Meta:
         model = quizCategory
-        fields = ('created', 'title','intro','rule', 'imagequizqna')
+        fields = ('created', 'title','title_kor', 'intro','rule', 'imagequizqna')
